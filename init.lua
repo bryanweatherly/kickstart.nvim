@@ -685,7 +685,8 @@ require('lazy').setup({
         marksman = {},
 
         elixirls = {
-          command = { '/opt/homebrew/bin/elixir-ls' },
+          -- command = { '/opt/homebrew/bin/elixir-ls' },
+          command = { '/home/linuxbrew/.linuxbrew/bin/elixir-ls' },
         },
 
         lua_ls = {
