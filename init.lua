@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -191,6 +191,18 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- Quick escape from insert mode using 'jk' or 'kj'
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode with jk' })
 vim.keymap.set('i', 'kj', '<Esc>', { desc = 'Exit insert mode with kj' })
+
+-- Tab navigation
+vim.keymap.set('n', '<Tab>', ':tabnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Tab>', ':tabprev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tn', ':tabnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tp', ':tabprev<CR>', { noremap = true, silent = true })
+
+-- Buffer navigation
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bp', ':bprev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-n>', ':bnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-p>', ':bprev<CR>', { noremap = true, silent = true })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -685,8 +697,8 @@ require('lazy').setup({
         marksman = {},
 
         elixirls = {
-          -- command = { '/opt/homebrew/bin/elixir-ls' },
-          command = { '/home/linuxbrew/.linuxbrew/bin/elixir-ls' },
+          command = { '/opt/homebrew/bin/elixir-ls' },
+          -- command = { '/home/linuxbrew/.linuxbrew/bin/elixir-ls' },
         },
 
         lua_ls = {
