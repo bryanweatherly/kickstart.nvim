@@ -233,6 +233,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Enable soft wrapping for markdown and text files
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Enable soft wrapping at 80 characters for markdown and text files',
+  group = vim.api.nvim_create_augroup('text-wrapping', { clear = true }),
+  pattern = { 'markdown', 'text' },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.textwidth = 80
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -988,13 +1000,21 @@ require('lazy').setup({
     'github/copilot.vim',
   },
 
-  -- Add wrapping.nvim for better text wrapping control
-  {
-    'andrewferrier/wrapping.nvim',
-    config = function()
-      require('wrapping').setup()
-    end,
-  },
+  -- Note: Using autocommand for text wrapping instead (see line 237)
+  -- {
+  --   'andrewferrier/wrapping.nvim',
+  --   config = function()
+  --     require('wrapping').setup({
+  --       auto_set_mode_filetype_allowlist = {
+  --         'markdown',
+  --         'text',
+  --         'asciidoc',
+  --         'gitcommit',
+  --       },
+  --       softener = { text = 80 },
+  --     })
+  --   end,
+  -- },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 
