@@ -1,4 +1,4 @@
---[[
+--[[init
 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
@@ -708,10 +708,7 @@ require('lazy').setup({
         --
         marksman = {},
 
-        elixirls = {
-          command = { '/opt/homebrew/bin/elixir-ls' },
-          -- command = { '/home/linuxbrew/.linuxbrew/bin/elixir-ls' },
-        },
+        elixirls = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -746,6 +743,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'prettier', -- Used to format Markdown, JSON, YAML, etc.
+        'elixir-ls', -- Elixir Language Server
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
